@@ -190,7 +190,7 @@ public class BookManagementPanel extends javax.swing.JPanel {
         txtAuthor.setText("");
         cmbCategory.setSelectedIndex(0);
     }                 
-}
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
