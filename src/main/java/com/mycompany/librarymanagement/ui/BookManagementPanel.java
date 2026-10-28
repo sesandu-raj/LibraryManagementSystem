@@ -5,11 +5,14 @@
 package com.mycompany.librarymanagement.ui;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -66,6 +69,31 @@ public class BookManagementPanel extends javax.swing.JPanel {
         formPanel.add(cmbCategory);
 
         add(formPanel, BorderLayout.NORTH);
+        
+        String[] columns = {"Book ID", "Title", "Author", "Category", "Status"};
+        tableModel = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Make table read-only
+            }
+        };
+        bookTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(bookTable);
+        add(scrollPane, BorderLayout.CENTER);
+  
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+
+        JButton btnAdd = new JButton("Add Book");
+        JButton btnSearch = new JButton("Search Book");
+        JButton btnRemove = new JButton("Remove Book");
+        JButton btnRefresh = new JButton("View All");
+
+        buttonPanel.add(btnAdd);
+        buttonPanel.add(btnSearch);
+        buttonPanel.add(btnRemove);
+        buttonPanel.add(btnRefresh);
+
+        add(buttonPanel, BorderLayout.SOUTH);
 
 
     /**
