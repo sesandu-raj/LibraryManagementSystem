@@ -5,8 +5,11 @@
 package com.mycompany.librarymanagement.ui;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +42,31 @@ public class BookManagementPanel extends javax.swing.JPanel {
         initCustomComponents(); 
         loadAllBooks();
     }
+    
+    private void initCustomComponents() {
+        
+        JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Book Details"));
+
+        formPanel.add(new JLabel("Book ID:"));
+        txtBookId = new JTextField();
+        formPanel.add(txtBookId);
+
+        formPanel.add(new JLabel("Title:"));
+        txtTitle = new JTextField();
+        formPanel.add(txtTitle);
+
+        formPanel.add(new JLabel("Author:"));
+        txtAuthor = new JTextField();
+        formPanel.add(txtAuthor);
+
+        formPanel.add(new JLabel("Category:"));
+        String[] categories = {"Programming", "Networking", "Database", "Cyber Security", "Other"};
+        cmbCategory = new JComboBox<>(categories);
+        formPanel.add(cmbCategory);
+
+        add(formPanel, BorderLayout.NORTH);
+
 
     /**
      * This method is called from within the constructor to initialize the form.
