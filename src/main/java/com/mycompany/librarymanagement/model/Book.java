@@ -8,6 +8,35 @@ package com.mycompany.librarymanagement.model;
  *
  * @author sesanduramath
  */
-public class Book {
+public class Book extends LibraryItem{
     
+    private String author;
+    private String category;
+    
+    public Book(String itemId, String title, boolean isAvailable,String author,String category){
+        super(String itemId, String title, boolean isAvailable);
+        this.author = author;
+        this.category = category;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    @Override
+    public String getItemType() {
+    return "Book";
+}
 }
