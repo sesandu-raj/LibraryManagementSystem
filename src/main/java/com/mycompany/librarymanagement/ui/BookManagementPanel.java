@@ -4,15 +4,27 @@
  */
 package com.mycompany.librarymanagement.ui;
 
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sesanduramath
  */
 public class BookManagementPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BookManagementPanel
-     */
+     private Library library;
+    
+    private JTextField txtBookId;
+    private JTextField txtTitle;
+    private JTextField txtAuthor;
+    private JComboBox<String> cmbCategory;
+    
+    private JTable bookTable;
+    private DefaultTableModel tableModel;
+    
     public BookManagementPanel() {
         initComponents();
     }
@@ -25,6 +37,8 @@ public class BookManagementPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -40,5 +54,6 @@ public class BookManagementPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
 }
