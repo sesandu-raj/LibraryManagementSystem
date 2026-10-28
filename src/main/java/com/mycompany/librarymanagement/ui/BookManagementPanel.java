@@ -4,6 +4,8 @@
  */
 package com.mycompany.librarymanagement.ui;
 
+import java.awt.BorderLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -29,6 +31,13 @@ public class BookManagementPanel extends javax.swing.JPanel {
         this.library = library;
         
         initComponents();
+        
+        removeAll();
+        setLayout(new BorderLayout(10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        
+        initCustomComponents(); 
+        loadAllBooks();
     }
 
     /**
