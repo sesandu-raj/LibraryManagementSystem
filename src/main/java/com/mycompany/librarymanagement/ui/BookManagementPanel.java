@@ -25,7 +25,9 @@ public class BookManagementPanel extends javax.swing.JPanel {
     private JTable bookTable;
     private DefaultTableModel tableModel;
     
-    public BookManagementPanel() {
+    public BookManagementPanel(Library library) {
+        this.library = library;
+        
         initComponents();
     }
 
