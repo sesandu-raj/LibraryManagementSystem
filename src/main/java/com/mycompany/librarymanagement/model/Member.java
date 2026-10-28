@@ -8,6 +8,16 @@ package com.mycompany.librarymanagement.model;
  *
  * @author sesanduramath
  */
-public class Member {
+public class Member extends Person {
     
+    public Member(String id, String name, String contactNumber){
+        super(id,name,contactNumber);
+        
+    }
+    
+    
+    @Override
+    public String getRole() {
+        return "Member";
+    }
 }
