@@ -14,6 +14,9 @@ public class Dashboard extends javax.swing.JPanel {
      * Creates new form Dashboard
      */
     public Dashboard() {
+        
+        
+        c1
         initComponents();
     }
 
