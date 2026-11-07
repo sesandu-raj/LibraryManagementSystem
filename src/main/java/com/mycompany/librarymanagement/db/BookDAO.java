@@ -4,12 +4,12 @@
  */
 package com.mycompany.librarymanagement.db;
 
-/**
- *
- * @author sesanduramath
- */
+import com.mycompany.librarymanagement.model.Book;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookDAO {
-    
+    // Using an ArrayList to store system data as requested[cite: 2]
     private List<Book> books;
 
     public BookDAO() {
@@ -19,7 +19,7 @@ public class BookDAO {
         books.add(new Book("B002", "Clean Code", true, "Robert C. Martin", "Programming"));
         books.add(new Book("B003", "Design Patterns", true, "Erich Gamma", "Programming"));
     }
-    
+
     public boolean addBook(Book book) {
         return books.add(book);
     }

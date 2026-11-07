@@ -37,12 +37,12 @@ public abstract class LibraryItem {
         this.title = title;
     }
 
-    public boolean isIsAvailable() {
+    public boolean isAvailable() {
         return isAvailable;
     }
 
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
+    public void setAvailable(boolean available) {
+        this.isAvailable = available;
     }
 
     public abstract String getItemType();    
