@@ -4,17 +4,105 @@
  */
 package com.mycompany.librarymanagement.ui;
 
+import com.mycompany.librarymanagement.logic.Library;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author sesanduramath
  */
 public class Dashboard extends javax.swing.JPanel {
+        private Library library;
+
+    
+    private JLabel lblTotalBooks;
+    private JLabel lblAvailableBooks;
+    private JLabel lblBorrowedBooks;
+    private JLabel lblTotalMembers;
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public Dashboard(Library library) {
+        
+         this.library = library;
+        
         initComponents();
+        
+        removeAll();
+        
+        setLayout(new BorderLayout(20, 20));
+        setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        
+        initCustomComponents(); 
+        refreshDashboard();
+    }
+    
+    private void initCustomComponents() {
+        
+        JLabel lblTitle = new JLabel("Library System Dashboard", SwingConstants.CENTER);
+        lblTitle.setFont(new Font("Arial", Font.BOLD, 24));
+        add(lblTitle, BorderLayout.NORTH);
+
+       
+        JPanel statsPanel = new JPanel(new GridLayout(2, 2, 20, 20));
+
+        
+        lblTotalBooks = createStatCard(statsPanel, "Total Books");
+        lblAvailableBooks = createStatCard(statsPanel, "Available Books");
+        lblBorrowedBooks = createStatCard(statsPanel, "Borrowed Books");
+        lblTotalMembers = createStatCard(statsPanel, "Total Members");
+
+        add(statsPanel, BorderLayout.CENTER);
+
+        
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JButton btnRefresh = new JButton("Refresh Statistics");
+        btnRefresh.setPreferredSize(new Dimension(150, 35));
+        btnRefresh.addActionListener(e -> refreshDashboard());
+        bottomPanel.add(btnRefresh);
+        
+        add(bottomPanel, BorderLayout.SOUTH);
+    }
+
+   
+    private JLabel createStatCard(JPanel parentPanel, String title) {
+        JPanel card = new JPanel(new BorderLayout());
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1, true),
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+        ));
+        card.setBackground(Color.WHITE);
+
+        JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        card.add(titleLabel, BorderLayout.NORTH);
+
+        JLabel valueLabel = new JLabel("0", SwingConstants.CENTER);
+        valueLabel.setFont(new Font("Arial", Font.BOLD, 36));
+        valueLabel.setForeground(new Color(41, 128, 185)); 
+        card.add(valueLabel, BorderLayout.CENTER);
+
+        parentPanel.add(card);
+        return valueLabel;
+    }
+
+    
+    public void refreshDashboard() {
+        lblTotalBooks.setText(String.valueOf(library.getTotalBooksCount()));
+        lblAvailableBooks.setText(String.valueOf(library.getAvailableBooksCount()));
+        lblBorrowedBooks.setText(String.valueOf(library.getBorrowedBooksCount()));
+        lblTotalMembers.setText(String.valueOf(library.getTotalMembersCount()));
     }
 
     /**
